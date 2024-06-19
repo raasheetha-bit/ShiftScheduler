@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal - Smart Task Allocation Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="SmartTask Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#viewSchedule">View Schedule</a></li>
+                <li><a href="#updateAvailability">Update Availability</a></li>
+                <li><a href="#applyLeave">Apply for Leave</a></li>
+                <li><a href="#viewLeaveBalances">View Leave Balances</a></li>
+                <li><a href="#markTasksCompleted">Mark Tasks as Completed</a></li>
+                <li><a href="#receiveNotifications">Receive Task Notifications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="viewSchedule">
+            <h2>View Schedule</h2>
+            <ul id="staffScheduleList">
+                <!-- Staff schedule items will be dynamically generated here -->
+                <li>Monday, 1st July - Shift 1</li>
+                <li>Tuesday, 2nd July - Shift 2</li>
+                <li>Wednesday, 3rd July - Shift 3</li>
+            </ul>
+        </section>
+
+        <section id="updateAvailability">
+            <h2>Update Availability</h2>
+            <button id="updateAvailabilityButton">Update Availability</button>
+        </section>
+
+        <section id="applyLeave">
+            <h2>Apply for Leave</h2>
+            <button id="applyLeaveButton">Apply for Leave</button>
+        </section>
+
+        <section id="viewLeaveBalances">
+            <h2>View Leave Balances</h2>
+            <p>Annual Leave: 15 days</p>
+            <p>Sick Leave: 7 days</p>
+        </section>
+
+        <section id="markTasksCompleted">
+            <h2>Mark Tasks as Completed</h2>
+            <button id="markTasksCompletedButton">Mark Tasks as Completed</button>
+        </section>
+
+        <section id="receiveNotifications">
+            <h2>Receive Task Notifications</h2>
+            <p>Notifications will be displayed here.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Task Allocation Application. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

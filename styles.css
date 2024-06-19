@@ -1,29 +1,45 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset default margin and padding for all elements */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
+/* Basic styling for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333; /* Main text color */
+}
+
+/* Header styling */
 header {
-    background-color: #333;
+    background: linear-gradient(135deg, #007bff, #ff4500); /* Gradient from electric blue to fiery red */
     color: #fff;
-    padding: 1em 0;
+    padding: 10px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 50px;
 }
 
+/* Logo container for making it circular */
 .logo {
-    font-size: 1.5em;
-    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Ensure the image doesn't overflow */
 }
 
+/* Logo image */
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation styling */
 nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
 }
 
@@ -32,51 +48,45 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
     text-decoration: none;
+    color: #fff;
     font-size: 1em;
+    transition: color 0.3s ease;
 }
 
+nav ul li a:hover {
+    color: #ffd700; /* Change to sunny yellow on hover */
+}
+
+/* Main content area */
 main {
-    padding: 50px;
+    padding: 30px;
     text-align: center;
 }
 
-.cta-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-}
-
+/* Section styling */
 section {
-    margin: 50px 0;
-}
-
-.feature, .user-story {
+    background-color: #fff;
+    padding: 20px;
     margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+section h2 {
+    margin-bottom: 20px;
+}
+
+section ul {
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Footer styling */
 footer {
     background-color: #333;
     color: #fff;
-    padding: 20px 50px;
+    padding: 20px;
     text-align: center;
-}
-
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-footer ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-footer ul li a {
-    color: #fff;
-    text-decoration: none;
 }

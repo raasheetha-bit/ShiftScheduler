@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal - Smart Task Allocation Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="SmartTask Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#viewSchedule">View Schedule</a></li>
+                <li><a href="updateAvailability">Update Availability</a></li>
+                <li><a href="#back">Apply for Leave</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Leave Application Form</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+            }
+            .form-group {
+                margin-bottom: 15px;
+            }
+            label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            input[type="text"], textarea {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                box-sizing: border-box;
+            }
+            textarea {
+                height: 100px;
+            }
+            input[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Leave Application Form</h2>
+            <br>
+            <form id="leaveForm" action="staff_portal.html">
+                <div class="form-group">
+                    <label for="leaveType">Leave Type:</label>
+                    <select id="leaveType" name="leaveType" required>
+                        <option value="">Select Leave Type</option>
+                        <option value="Annual Leave">Annual Leave</option>
+                        <option value="Sick Leave">Sick Leave</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="leaveStartDate">Leave Start Date:</label>
+                    <input type="date" id="leaveStartDate" name="leaveStartDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="leaveEndDate">Leave End Date:</label>
+                    <input type="date" id="leaveEndDate" name="leaveEndDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason for Leave:</label>
+                    <textarea id="reason" name="reason" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="fileInput">Attach a document(If needed):</label>
+                    <input type="file" id="fileInput" name="fileInput" accept=".txt,.pdf,.doc,.docx,.img" required>
+                </div>
+                <div class="form-group" >
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+        </body>
+  
+
+        <br>
+        <br>
+        <a href="staff_portal.html">
+            <button class="staff_portal">Go back to homepage</button>
+        </a>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 Smart Task Allocation Application. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+  
+</body>
+</html>

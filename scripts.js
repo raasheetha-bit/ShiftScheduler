@@ -1,65 +1,6 @@
-// JavaScript for interactive features
-
-// Function to handle login form submission
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-
-    // Replace with actual login logic (e.g., API call)
-    let username = document.getElementById('username').value;
-    let password = document.getElementById('password').value;
-
-    console.log('Logging in with username:', username);
-    console.log('Password:', password);
-
-    // Redirect to respective dashboard based on user role (Manager, Staff, Admin)
-    window.location.href = 'dashboard_manager.html'; // Example redirect for manager
-});
-
-// Simulated data - replace with actual API calls or data retrieval logic
-const scheduleData = [
-    { date: '2024-07-01', shift: 'Morning', staff: 'John Doe' },
-    { date: '2024-07-02', shift: 'Afternoon', staff: 'Jane Smith' },
-    { date: '2024-07-03', shift: 'Evening', staff: 'Mike Johnson' },
-    // Add more schedule entries as needed
-];
-
-// Function to display the monthly schedule
-function displayMonthlySchedule() {
-    const scheduleContainer = document.getElementById('scheduleContainer');
-    scheduleContainer.innerHTML = ''; // Clear previous content
-
-    scheduleData.forEach(entry => {
-        const scheduleItem = document.createElement('div');
-        scheduleItem.classList.add('schedule-item');
-        scheduleItem.innerHTML = `
-            <div><strong>Date:</strong> ${entry.date}</div>
-            <div><strong>Shift:</strong> ${entry.shift}</div>
-            <div><strong>Staff:</strong> ${entry.staff}</div>
-        `;
-        scheduleContainer.appendChild(scheduleItem);
-    });
-}
-
-// Function to edit schedule (example - simulation)
-function editSchedule(date, shift, staff) {
-    // Simulated edit functionality, replace with actual logic
-    console.log('Editing schedule for Date:', date, 'Shift:', shift, 'Staff:', staff);
-    // Example: Open a modal or form for editing
-}
-
-// Function to send messages to staff (example)
-function sendMessageToStaff(message) {
-    // Simulated send message to staff functionality
-    console.log('Sending message to staff:', message);
-    // Example: Implement messaging feature via backend integration
-}
 document.addEventListener('DOMContentLoaded', function() {
     // Simulated data (replace with actual API calls in production)
-    const scheduleData = [
-        { date: 'Monday, 1st July', shift: 'Shift 1' },
-        { date: 'Tuesday, 2nd July', shift: 'Shift 2' },
-        { date: 'Wednesday, 3rd July', shift: 'Shift 3' }
-    ];
+    let scheduleData = []; // Placeholder for schedule entries fetched from backend
 
     // Function to display monthly schedule
     function displayMonthlySchedule() {
@@ -68,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         scheduleData.forEach(entry => {
             const li = document.createElement('li');
-            li.textContent = `${entry.date} - ${entry.shift}`;
+            li.textContent = `${entry.date} - Shift ${entry.shift} (${entry.staff})`;
             scheduleList.appendChild(li);
         });
     }
@@ -78,6 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`Editing schedule for ${date}, Shift ${shift}, Staff ${staff}`);
         // Simulated logic to update schedule in backend
         // Replace with actual backend integration
+        scheduleData.forEach(entry => {
+            if (entry.date === date && entry.shift === shift) {
+                entry.staff = staff; // Simulated update
+            }
+        });
+        displayMonthlySchedule(); // Refresh schedule display after edit
     }
 
     // Function to view account details (simulated)
@@ -134,12 +81,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listeners for interactive features
     const editScheduleButton = document.getElementById('editScheduleButton');
     editScheduleButton.addEventListener('click', function() {
-        editSchedule('Monday, 1st July', 'Shift 1', 'John Doe');
+        const date = prompt('Enter date (e.g., Monday, 1st July):');
+        const shift = prompt('Enter shift number:');
+        const staff = prompt('Enter staff member:');
+        if (date && shift && staff) {
+            editSchedule(date, shift, staff);
+        } else {
+            alert('Please enter valid details to edit the schedule.');
+        }
     });
 
     const approveLeaveButton = document.getElementById('approveLeaveButton');
     approveLeaveButton.addEventListener('click', function() {
-        approveLeaveRequest('Monday, 1st July', 'John Doe');
+        const date = prompt('Enter date for leave approval:');
+        const staff = prompt('Enter staff member:');
+        if (date && staff) {
+            approveLeaveRequest(date, staff);
+        } else {
+            alert('Please enter valid details to approve leave.');
+        }
     });
 
     const sendMessageButton = document.getElementById('sendMessageButton');
@@ -147,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const message = prompt('Enter your message:');
         if (message) {
             sendMessageToStaff(message);
+        } else {
+            alert('Please enter a message to send.');
         }
     });
 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Smart Task Allocation Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+        .name {
+            flex: 1;
+            text-align: left;
+        }
+        .contact {
+            flex: 1;
+            text-align: center;
+        }
+        .edit-btn {
+            flex: 0; /* Change to 0 so it does not take extra space */
+            text-align: right;
+        }
+        .delete-btn {
+            flex: 0; /* Change to 0 so it does not take extra space */
+            text-align: right;
+        }
+        .name h1, .contact h1 {
+            margin: 0;
+            font-size: 1.5em; /* Adjust font size as needed */
+        }
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="SmartTask Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#manageUserAccounts">Manage User Accounts</a></li>
+                <li><a href="#searchUserAccounts">Search User Accounts</a></li>
+                <li><a href="#createUpdateUserProfiles">Create/Update User Profiles</a></li>
+                <li><a href="#viewUserProfiles">View User Profiles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="manageUserAccounts">
+            <h2>Manage User Accounts</h2>
+            <p class="a"><button type="addUser">Add User</button></p>
+            <div class="container">
+                
+                <div class="name"><h1><strong>Name</strong></h1></div>
+                <div class="contact"><h1><strong>Contact</strong></h1></div>
+
+            
+            </div>
+            <div class="container">
+                
+                <div class="name">John</div>
+                <div class="contact">1234456</div>
+                <div class="edit-btn"><button>Edit</button></div>
+                <div class="delete-btn"><button>Delete</button></div>
+            
+            </div>
+        </section>
+    </main>
+</body>
+</html>

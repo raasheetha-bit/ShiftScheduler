@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedules - Manager Dashboard</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .shift {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .shift p {
+            margin: 5px 0;
+        }
+        .leave {
+            color: red;
+        }
+        .hours {
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar is-primary">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <img src="../images/logo.png" alt="SmartTask Logo">
+            </a>
+        </div>
+        <div class="navbar-menu" id="navContainer"></div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <h1 class="title">Schedules</h1>
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="dashboard_manager.html">Back to Dashboard</a></li>
+                </ul>
+            </nav>
+            <section id="monthlySchedule">
+                <h2 class="subtitle">Monthly Schedule</h2>
+                <table class="table is-striped is-fullwidth" id="schedule">
+                    <thead>
+                        <tr>
+                            <th>Sunday</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody">
+                        <!-- Schedule data will be inserted here -->
+                    </tbody>
+                </table>
+            </section>
+            <section id="filterSchedule">
+                <h2 class="subtitle">Filter Schedule</h2>
+                <div class="field">
+                    <label class="label">Filter by Department</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Enter department">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Filter by Role</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Enter role">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Filter by Staff Member</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Enter staff member">
+                    </div>
+                </div>
+                <button class="button is-primary" id="filterButton">Apply Filters</button>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Task Allocation Application. All rights reserved.</p>
+    </footer>
+
+    <script src="../scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../navManager.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navContainer').innerHTML = data;
+                });
+
+            // Example schedule data
+            const scheduleData = [
+                { date: '1', day: 'Sunday', shifts: [{ name: 'John', hours: 6 }, { name: 'Alice', hours: 6, onLeave: true }] },
+                { date: '2', day: 'Monday', shifts: [{ name: 'Cody', hours: 6 }, { name: 'Sandra', hours: 6 }] },
+                { date: '3', day: 'Tuesday', shifts: [{ name: 'John', hours: 6 }, { name: 'Alice', hours: 6 }] },
+                { date: '4', day: 'Wednesday', shifts: [{ name: 'Cody', hours: 6 }, { name: 'Sandra', hours: 6 }] },
+                { date: '5', day: 'Thursday', shifts: [{ name: 'John', hours: 6 }, { name: 'Alice', hours: 6 }] },
+                { date: '6', day: 'Friday', shifts: [{ name: 'Cody', hours: 6 }, { name: 'Sandra', hours: 6 }] },
+                { date: '7', day: 'Saturday', shifts: [{ name: 'John', hours: 6 }, { name: 'Alice', hours: 6 }] },
+                // ...add more data as needed
+            ];
+
+            // Function to display the schedule
+            function displayMonthlySchedule() {
+                const scheduleBody = document.getElementById('scheduleBody');
+                let currentRow;
+
+                scheduleData.forEach((day, index) => {
+                    if (index % 7 === 0) {
+                        currentRow = document.createElement('tr');
+                        scheduleBody.appendChild(currentRow);
+                    }
+
+                    const dayCell = document.createElement('td');
+                    const dateP = document.createElement('p');
+                    dateP.textContent = day.date;
+
+                    dayCell.appendChild(dateP);
+
+                    day.shifts.forEach(shift => {
+                        const shiftP = document.createElement('p');
+                        shiftP.className = 'shift';
+
+                        if (shift.onLeave) {
+                            shiftP.innerHTML = `<span class="name">${shift.name}</span> <span class="leave">On Leave</span>`;
+                        } else {
+                            shiftP.innerHTML = `<span class="name">${shift.name}</span> <span class="hours">${shift.hours}h</span>`;
+                        }
+
+                        dayCell.appendChild(shiftP);
+                    });
+
+                    currentRow.appendChild(dayCell);
+                });
+            }
+
+            displayMonthlySchedule();
+        });
+    </script>
+</body>
+</html>
